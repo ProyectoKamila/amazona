@@ -20,9 +20,11 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+
                                 <a><div class="redes twitter"></div></a>
                                 <a><div class="redes facebook"></div></a>
                                 <a><div class="redes google"></div></a>
+
                             </div>
                             <div class="col-lg-8 col-md-8 hidden-sm hidden-xs content-nav">
                                 <ul class="nav nav-pills">
@@ -32,10 +34,12 @@
                                             <input type="submit" name="Buscar" class="buscar" value="Buscar" /></form>
                                         <a href="#" id="busqueda"><img src="<?php bloginfo('template_url'); ?>/images/general/lupa.png" alt="lupa" class="lupa"/></a>
                                     </li>
-                                    <li role="presentation"><a href="#">Iniciar Sesion</a></li>
-                                    <li role="presentation"><a href="#">Mi Cuenta</a></li>
-                                    <li role="presentation"><a href="#">Contacto</a></li>
-                                    <li role="presentation"><a href="#">Nosotros</a></li>
+
+                                    <li role="presentation"><a href="<?php home_url('mi-cuenta'); ?>">Iniciar Sesion</a></li>
+                                    <li role="presentation"><a href="<?php home_url('mi-cuenta'); ?>">Mi Cuenta</a></li>
+                                    <li role="presentation"><a href="<?php home_url('contacto'); ?>">Contacto</a></li>
+                                    <li role="presentation"><a href="<?php home_url('nosotros'); ?>">Nosotros</a></li>
+
                                 </ul>
                             </div>
                             <div class="col-lg-1 col-md-1 hidden-sm hidden-xs ">
@@ -50,7 +54,11 @@
                             </div>
                             <div class="clearfix bordeado"></div>
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 logo">
+
+                                <a href="<?php home_url(''); ?>">
                                 <img src="<?php bloginfo('template_url'); ?>/images/general/logo.png" alt="Amazona Paralelo"/>
+                                </a>
+
                             </div>
                             <div class="col-lg-10 col-md-10 hidden-sm hidden-xs categories-list">
                                 <ul class="nav nav-pills">
@@ -124,4 +132,6 @@
                 </div>
 
             </div>
+
         </header>
+

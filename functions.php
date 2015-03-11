@@ -5,8 +5,26 @@ add_action('init', 'theme_custom_types');
 add_filter('admin_footer_text', 'left_admin_footer_text_output');
 add_filter('update_footer', 'right_admin_footer_text_output', 11);
 add_action('wp_dashboard_setup', 'custom_dashboard_widgets');
+
+
+//add_action('wp_dashboard_setup', 'add_dashboard_widgets');
 //add_action('admin_init', 'register_meta_boxes');
+add_theme_support('category-thumbnails');
 add_theme_support('post-thumbnails');
+if (class_exists('MultiPostThumbnails')) {
+    new MultiPostThumbnails(
+            array(
+        'label' => 'Imagen Misi$oacute;n',
+        'id' => 'secondary-image',
+        'post_type' => 'post'
+            )
+    );
+}
+if (class_exists('MultiPostThumbnails')) :
+    MultiPostThumbnails::the_post_thumbnail(
+            get_post_type(), 'secondary-image'
+    );
+endif;
 
 function debug($var, $stop = true) {
     echo '<pre>';
@@ -176,56 +194,55 @@ function custom_dashboard_widgets() {
 }
 
 function theme_custom_types() {
-
     add_custom_post_type(array(
-        'type' => 'slider',
-        'singular' => 'slider'
+        'type' => 'banner',
+        'plural' => 'banner',
+//    'supports' => array('thumbnail', 'title'),
     ));
-
-
-
-//        add_custom_taxonomy(array(
-//        'name' => 'categorias',
-//        'singular' => 'categoria',
-//        'genero' => 'f',
-//        'post_type' => 'nosotros',
-//        'hierarchical' => true
-//    ));
+    add_custom_taxonomy(array(
+        'name' => 'category_banner',
+        'singular' => 'Categoria',
+        'genero' => 'f',
+        'post_type' => 'banner',
+        'hierarchical' => true
+    ));
 }
 
-function max_charlength($text, $charlength, $pad = '[...]', $strict = false) {
-    $text = strip_tags($text);
-    if (mb_strlen($text) > $charlength) {
-        $subex = mb_substr($text, 0, $charlength - mb_strlen($pad));
+function pagination($pages = '', $range = 4) {
+    $showitems = ($range * 2) + 1;
 
-        if ($strict) {
-            $charlength++;
-            $result = $subex;
-        } else {
+    global $paged;
+    if (empty($paged))
+        $paged = 1;
 
-            $exwords = explode(' ', $subex);
-            $excut = - ( mb_strlen($exwords[count($exwords) - 1]) );
-            if ($excut < 0) {
-                $result = mb_substr($subex, 0, $excut);
-            } else {
-                $result = $subex;
+    if ($pages == '') {
+        global $wp_query;
+        $pages = $wp_query->max_num_pages;
+        if (!$pages) {
+            $pages = 1;
+        }
+    }
+
+    if (1 != $pages) {
+        echo "<ul class=\"pagination p\">";
+        if ($paged > 2 && $paged > $range + 1 && $showitems < $pages)
+            echo "<li><a class=\"home\" href='" . get_pagenum_link(1) . "'' aria-label='Next'><span aria-hidden='true'> &gt; </span></a></li>";
+        if ($paged > 1 && $showitems < $pages)
+            echo "<li><a class=\"after\" href='" . get_pagenum_link($paged - 1) . "'' aria-label='Next'><span aria-hidden='true'> &gt; </span></a></li>";
+
+        for ($i = 1; $i <= $pages; $i++) {
+            if (1 != $pages && (!($i >= $paged + $range + 1 || $i <= $paged - $range - 1) || $pages <= $showitems )) {
+                echo ($paged == $i) ? "<li><span class=\"current\">" . $i . "</span></li>" : "<li><a href='" . get_pagenum_link($i) . "' class=\"page-numbers\"> " . $i . "</a></li>";
             }
         }
-        $result .= $pad;
-    } else {
-        $result = $text;
+
+        if ($paged < $pages && $showitems < $pages)
+            echo "<li><a class=\"before\" href=\'" . get_pagenum_link($paged + 1) . "'><span aria-hidden='true'> &gt; </span></a></li>";
+        if ($paged < $pages - 1 && $paged + $range - 1 < $pages && $showitems < $pages)
+            ;
+        echo "<li><a class=\"end\" href='" . get_pagenum_link($wp_query->max_num_pages) . "' aria-label='Next'><span aria-hidden='true'> &gt; </span></a></li>";
+        echo "</ul>\n";
     }
-    return $result;
-}
-
-//deactivate WordPress function
-remove_shortcode('gallery', 'gallery_shortcode');
-
-//activate own function
-add_shortcode('gallery', 'cort');
-
-function cort() {
-    return;
 }
 
 ?>

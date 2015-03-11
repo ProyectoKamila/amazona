@@ -20,7 +20,7 @@ header.menu{
     }
 
     #twitter{
-
+        background: url(../images/general/redes.png) left top no-repeat;
     }
     .logo{
         padding-top: 5px;
@@ -67,15 +67,19 @@ header.menu{
             width: 320px;
             display: none;
             transition: 1s all ease-in-out;
+            
         }
         .search-form input#s{
             height: 49px;
             width: 65%;
+            z-index: 41;
+            position:relative;
 
         }
         .search-form input{
             float: left;
             height: 49px;
+            
         }
         .search-form .buscar{
             width: 35%;
@@ -131,16 +135,35 @@ header.menu{
         background: url(../images/general/whish-white.png) center no-repeat @azul-top;
     }
     .redes{
-        width: 48px;
-        height: 48px;
+        width: 32px;
+        height: 32px;
         display: inline-block;
         vertical-align: middle;
-        background-position:  top center;
-        background: yellow;
+        margin-top: 5px;
+        transition: 1s all ease-in-out;
+        background: url(../images/general/redes.png) no-repeat;
+        cursor: pointer;
     }
-    .redes:hover{
-        background-position:  bottom center;
+    .google{
+        
+        background-position: 0px 0px;
     }
+    .google:hover{
+        background-position: 0px -33px;
+    }
+    .facebook{
+        background-position: -64px 0px;
+    }
+    .facebook:hover{
+        background-position: -64px -33px;
+    }
+    .twitter{
+        background-position: -34px 0px;
+    }
+    .twitter:hover{
+        background-position: -34px -33px;
+    }
+    
     .bordeado{
         border-bottom: 1px dashed @azul-claro;
         z-index: 1;
@@ -190,10 +213,9 @@ header.menu-movil{
         text-align: center;
         overflow: hidden;
         padding-top:5px;
-        img{
 
-        }
     }
+
     .logo{
         padding-top: 30px;
     }
@@ -411,7 +433,7 @@ header.menu-movil{
             position: absolute;
             bottom: 0px;
             left: 35px;
-            background: yellow;
+
             background: url(../images/general/corazon-18.png)  center  @azul-claro no-repeat;
             cursor: pointer;
         }

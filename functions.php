@@ -245,4 +245,114 @@ function pagination($pages = '', $range = 4) {
     }
 }
 
-?>
+
+
+// Hook for adding admin menus
+add_action('admin_menu', 'pkconfig_divisa');
+
+// action function for above hook
+function pkconfig_divisa() {
+    add_menu_page(__('Divisas', 'menu-test'), __('Divisas', 'menu-test'), 'manage_options', 'badge', 'pkconfig_divisa_options');
+}
+
+function pkconfig_divisa_options() {
+    //must check that the user has the required capability 
+    if (!current_user_can('manage_options')) {
+        wp_die(__('Usted no tiene los permisos necesarios para acceder a esta página.'));
+    }
+
+    // variables for the field and option names 
+    $opt_name = 'mt_divisa';
+    $divisa = 'divisa';
+ 
+    
+    $data_field_name = 'mt_divisa';
+
+    // Read in existing option value from database
+    $opt_val = get_option($opt_name);
+
+    // See if the user has posted us some information
+    // If they did, this hidden field will be set to 'Y'
+    if (isset($_POST[$divisa])) {
+
+        // Read their posted value
+        $opt_val = json_encode($_POST);
+
+        // Save the posted value in the database
+        update_option($opt_name, $opt_val);
+
+        //debug($opt_val, false);
+        // Put an settings updated message on the screen
+        ?>
+        <div class="updated"><p><strong><?php _e('settings saved.', 'menu-test'); ?></strong></p></div>
+        <?php
+    }
+    $db = json_decode($opt_val);
+//    debug($db->alert, false);
+//    
+    // Now display the settings editing screen
+
+    echo '<div class="wrap">';
+
+    // header
+
+    echo "<h2>" . __('Menu Test Plugin Settings', 'menu-test') . "</h2>";
+
+    // settings form
+    ?>
+    <form name="form1" method="post" action="">
+        <table class="form-table">
+            <tr>
+                <th scope="row">
+                    <label><?php _e("Valor:", 'menu-test'); ?></label>
+                </th>
+                <td>
+                    <input type="number" name="<?php echo $divisa; ?>" value="<?php echo $db->divisa; ?>" size="70">
+                    <p class="description">Configuraci&oacute;n del valor del dolar en Bolivares</p>
+                </td>
+            </tr>
+
+        </table>
+
+        <p class="submit">
+            <input type="submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
+        </p>
+
+    </form>
+    </div>
+
+    <?php
+// debug($_REQUEST, false);
+}
+
+function select_divisa($d='Bs.',$dato, $t=1) {
+//    mt_pkconfig
+    $num = (int)$dato;
+    $opt_name = 'mt_divisa';
+    $opt_val = get_option($opt_name);
+    $db = json_decode($opt_val);
+    
+    return $d.$db->divisa*$num*$t;
+//    update_option($opt_name, $config);
+}
+
+
+function e_add_to_cart($product){
+                                    global $product;
+
+echo apply_filters( 'woocommerce_loop_add_to_cart_link',
+	sprintf( '<a href="%s" rel="nofollow" data-product_id="%s" data-product_sku="%s" data-quantity="%s" class="button %s product_type_%s">%s</a>',
+		esc_url( $product->add_to_cart_url() ),
+		esc_attr( $product->id ),
+		esc_attr( $product->get_sku() ),
+		esc_attr( isset( $quantity ) ? $quantity : 1 ),
+		$product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
+		esc_attr( $product->product_type ),
+		esc_html( $product->add_to_cart_text() )
+	),
+$product );
+               
+}
+
+
+

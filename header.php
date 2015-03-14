@@ -55,7 +55,7 @@
                             <div class="clearfix bordeado"></div>
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 logo">
 
-                                <a href="<?php home_url(''); ?>">
+                                <a href="<?php home_url('/'); ?>">
                                 <img src="<?php bloginfo('template_url'); ?>/images/general/logo.png" alt="Amazona Paralelo"/>
                                 </a>
 

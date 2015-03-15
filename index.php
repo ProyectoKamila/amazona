@@ -13,15 +13,15 @@
                 <?php
                 while (have_posts()) {
                     the_post()
-                    if ($x == 1) {
+//                    if ($x === '1') {
                         ?>
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 oferta box-offer-1">
                             <div class="oferta-producto-imagen">
-                                <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID));         ?>" alt="<?php // the_title();        ?>"/>
+                                <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>" alt="<?php // the_title();         ?>"/>
                             </div>
                             <div class="oferta-producto-description">
-                                <h2><?php // the_titile();      ?></h2>
+                                <h2><?php // the_titile();       ?></h2>
                                 <?php // the_content();    ?>
                             </div>
                             <div class="oferta-precio">
@@ -29,9 +29,9 @@
                             </div>
                         </div>
                         <div class="clearfix"></div>
-                    <?php } ?>
+                    <?php // } ?>
 
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 oferta box-offer-2">
+<!--                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 oferta box-offer-2">
                         <div class="oferta-producto-imagen">
                             <img src="<?php bloginfo('template_url'); ?>/images/temporal/silla.png" alt="Silla"/>
                         </div>
@@ -54,7 +54,7 @@
                         <div class="oferta-precio">
                             99.2$
                         </div>
-                    </div>
+                    </div>-->
                 <?php } ?>
             </div>
         </div>

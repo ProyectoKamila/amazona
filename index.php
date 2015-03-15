@@ -1,68 +1,61 @@
 <?php get_header(); ?>
 <div class="container">
     <div class="row">
+        <?php get_template_part('banner'); ?>
+
         <?php
-        $var = query_posts(array('post_type' => "banner", 'posts_per_page' => 4));
-//        debug($query);
+        $d = query_posts(array('pots_type' => 'product', 'product_cat' => 'destacados', 'posts_per_page' => 3));
+//        debug($d);
+        $x = 1;
         ?>
-        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 slider">
-            <?php if (!empty($var)) { ?>
-                <ul id="slider1">
-                    <?php
-                    while (have_posts()) {
-                        the_post();
-                        ?>
-                        <li data-animate="rotateInUpLeft, rotateOutUpRight"><?php the_content(); ?></li>
-                    <?php } ?>
-                </ul>
-            <?php } else { ?>
-                <p>Aun no se han cargado Sliders. Muy pronto! espera lo nuevo.</p>
-            <?php } wp_reset_query(); ?>
-        </div>
-
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-
             <div class="row">
+                <?php
+                while (have_posts()) {
+                    the_post()
+                    if ($x == 1) {
+                        ?>
 
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 oferta box-offer-1">
-                    <div class="oferta-producto-imagen">
-                        <img src="<?php // echo wp_get_attachment_url(get_post_thumbnail_id($post->ID));  ?>" alt="<?php // the_title(); ?>"/>
-                    </div>
-                    <div class="oferta-producto-description">
-                        <h2><?php // the_titile(); ?></h2>
-                        <?php // the_content(); ?>
-                    </div>
-                    <div class="oferta-precio">
-                        999
-                    </div>
-                </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 oferta box-offer-1">
+                            <div class="oferta-producto-imagen">
+                                <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID));         ?>" alt="<?php // the_title();        ?>"/>
+                            </div>
+                            <div class="oferta-producto-description">
+                                <h2><?php // the_titile();      ?></h2>
+                                <?php // the_content();    ?>
+                            </div>
+                            <div class="oferta-precio">
+                                999
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    <?php } ?>
 
-                <div class="clearfix"></div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 oferta box-offer-2">
-                    <div class="oferta-producto-imagen">
-                        <img src="<?php bloginfo('template_url'); ?>/images/temporal/silla.png" alt="Silla"/>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 oferta box-offer-2">
+                        <div class="oferta-producto-imagen">
+                            <img src="<?php bloginfo('template_url'); ?>/images/temporal/silla.png" alt="Silla"/>
+                        </div>
+                        <div class="oferta-producto-description visible-sm visible-xs">
+                            <h2>Silla Verde titulo de producto</h2>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy tex</p>
+                        </div>
+                        <div class="oferta-precio">
+                            99.2$
+                        </div>
                     </div>
-                    <div class="oferta-producto-description visible-sm visible-xs">
-                        <h2>Silla Verde titulo de producto</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy tex</p>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 oferta box-offer-3">
+                        <div class="oferta-producto-imagen">
+                            <img src="<?php bloginfo('template_url'); ?>/images/temporal/silla.png" alt="Silla"/>
+                        </div>
+                        <div class="oferta-producto-description visible-sm visible-xs">
+                            <h2>Silla Verde titulo de producto</h2>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy tex</p>
+                        </div>
+                        <div class="oferta-precio">
+                            99.2$
+                        </div>
                     </div>
-                    <div class="oferta-precio">
-                        99.2$
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 oferta box-offer-3">
-                    <div class="oferta-producto-imagen">
-                        <img src="<?php bloginfo('template_url'); ?>/images/temporal/silla.png" alt="Silla"/>
-                    </div>
-                    <div class="oferta-producto-description visible-sm visible-xs">
-                        <h2>Silla Verde titulo de producto</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy tex</p>
-                    </div>
-                    <div class="oferta-precio">
-                        99.2$
-                    </div>
-                </div>
-
+                <?php } ?>
             </div>
         </div>
     </div>

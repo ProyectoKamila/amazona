@@ -105,13 +105,7 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="row">
-                    <?php for ($i = 0; $i < 9; $i++) { ?>
-                        <div class="col-sm-3 col-md-3 col-lg-4 col-xs-6">
-                            <a href="#" class="thumbnail">
-                                <img src="<?php bloginfo('template_url') ?>/images/temporal/item1.png" alt="categoria">
-                            </a>
-                        </div>
-                    <?php } ?>
+                    <?php get_template_part('categorias'); ?>
                 </div>
             </div>
         </div>

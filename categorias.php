@@ -1,12 +1,10 @@
 <?php
 $counter = 0;
 $max = 6; //number of categories to display
-
-
 $args = array(
     'type' => 'product',
     'child_of' => 0,
-    'parent' => 42,
+//    'parent' => 42,
     'orderby' => 'name',
     'order' => 'ASC',
     'hide_empty' => 0,
@@ -41,8 +39,8 @@ if ($terms) {
                 $category_link = get_category_link(get_term_by('slug', $term->slug, 'product_cat'));
                 //debug($category_link);
                 ?>
-                <div class="col-sm-6">
-                    <a href="<?= $category_link; ?>">
+                <div class="col-sm-3 col-md-3 col-lg-4 col-xs-6">
+                    <a href="<?= $category_link; ?>" class="thumbnail">
                         <img class="img" src="<?= $image; ?>">
                     </a>
                 </div>

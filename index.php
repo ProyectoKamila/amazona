@@ -15,23 +15,23 @@
                     the_post();
                     ?>
 
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 oferta box-offer-<?php echo $x; ?>">
+                    <div class="  <?php if ($x === 1) { ?>col-lg-12 col-md-12 col-sm-12 col-xs-12<?php } else { ?>col-lg-6 col-md-6 col-sm-12 col-xs-12<?php } ?> oferta box-offer-<?php echo $x; ?>">
                         <div class="oferta-producto-imagen">
                             <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>" alt="<?php the_title(); ?>"/>
                         </div>
                         <div class="oferta-producto-description">
                             <h2><?php the_title(); ?></h2>
-                            <?php echo max_charlength($post->postexcerpt, 90) ?>
+                            <p><?php echo max_charlength($post->post_excerpt, 120) ?></p>
 
                         </div>
                         <div class="oferta-precio">
-                            <?php  ?>
+                            <?php echo select_divisa('Bs.', $product->get_price()); ?>
                         </div>
                     </div>
                     <?php if ($x === 1) { ?>
                         <div class="clearfix"></div>
                         <?php
-                        $x++;
+                        $x = $x + 1;
                     }
                     ?>
 
@@ -48,17 +48,28 @@
                 Lo mejor de
             </div>
             <div class="clearfix"></div>
-
+            <?php
+            wp_reset_query();
+            $catid = get_cat_id('destacados');
+            query_posts(array('post_type' => 'product', 'exclude' => 'destacados'));
+            ?>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 home-producto">
                 <ul id="foo2">
-                    <?php for ($i = 0; $i < 8; $i++) { ?>
+
+                    <?php
+                    while (have_posts()) {
+                        the_post();
+                        ?>
                         <li >
+                            <div class="origami-categoria">
+                                <?php the_category(get_the_ID()); ?>
+                            </div>
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 ">
                                 <div class="producto">
                                     <div class="producto-imagen">
-                                        <img src="<?php bloginfo('template_url'); ?>/images/temporal/silla.png" alt="Silla"/>
+                                        <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>" alt="<?php the_title(); ?>"/>
                                     </div>
-                                    <p>This product title</p>
+                                    <p><?php the_title(); ?> - <?php echo select_divisa('Bs.', $product->get_price()); ?></p>
                                     <div class="producto-precio"></div>
                                     <div class="producto-wishlist"></div>
                                 </div>
@@ -106,4 +117,5 @@
         </div>
     </div>
 </div>
-<?php get_footer(''); 
+<?php
+get_footer('');

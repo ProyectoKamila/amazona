@@ -83,6 +83,30 @@ $('#boton-categoria').click(function () {
                     left: ["100%", "swing"]
                 },
         300
+                );  
+//         $('header.menu-movil').css('height','auto');
+//         $('header.menu-movil').css('overflow','auto');
+    });
+});
+$('#boton-usuario').click(function () {
+    $('#menu-usuario').toggle(function () {
+        $('#menu-usuario').animate(
+                {
+                    left: ["100%", "swing"]
+                },
+        300
+                );
+//         $('header.menu-movil').css('height','auto');
+//         $('header.menu-movil').css('overflow','auto');
+    });
+});
+$('#boton-carrito').click(function () {
+    $('#menu-carrito').toggle(function () {
+        $('#menu-carrito').animate(
+                {
+                    left: ["100%", "swing"]
+                },
+        300
                 );
 //         $('header.menu-movil').css('height','auto');
 //         $('header.menu-movil').css('overflow','auto');

@@ -67,7 +67,7 @@ header.menu{
             width: 320px;
             display: none;
             transition: 1s all ease-in-out;
-            
+
         }
         .search-form input#s{
             height: 49px;
@@ -79,7 +79,7 @@ header.menu{
         .search-form input{
             float: left;
             height: 49px;
-            
+
         }
         .search-form .buscar{
             width: 35%;
@@ -146,7 +146,7 @@ header.menu{
         cursor: pointer;
     }
     .google{
-        
+
         background-position: 0px 0px;
     }
     .google:hover{
@@ -165,7 +165,7 @@ header.menu{
     .twitter:hover{
         background-position: -34px -33px;
     }
-    
+
     .bordeado{
         border-bottom: 1px dashed @azul-claro;
         z-index: 1;
@@ -376,6 +376,7 @@ header.menu-movil{
     height:320px;
     padding-left: 0px;
     padding-right: 0px;
+
     .caroufredsel_wrapper{
         width: 100% !important;
     }
@@ -404,7 +405,14 @@ header.menu-movil{
             width: 100%;
         }
     }
-
+    .origami-categoria{
+        width: 80%;
+        height: 35px;
+        background: @naranja;
+        position: absolute;
+        z-index: 5;
+        top: 0;
+    }
     .producto{
         height: 320px;
         background: @lila;
@@ -604,7 +612,7 @@ footer{
     display: none !important;
 
 }
-#menu-categorias{
+#menu-categorias , #menu-usuario, #menu-carrito{
     display: none;
     margin-left: -100%;
     overflow: hidden;

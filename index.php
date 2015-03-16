@@ -21,11 +21,11 @@
                         </div>
                         <div class="oferta-producto-description">
                             <h2><?php the_title(); ?></h2>
-                            <?php echo $post->post_excerpt; ?>
+                            <?php echo max_charlength($post->postexcerpt, 90) ?>
 
                         </div>
                         <div class="oferta-precio">
-                            <?php // echo cd_get_post_meta('postexcerpt'); ?>
+                            <?php  ?>
                         </div>
                     </div>
                     <?php if ($x === 1) { ?>

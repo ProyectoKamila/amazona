@@ -1,5 +1,4 @@
 <?php
-
 add_action('login_head', 'custom_login_logo');
 add_action('init', 'theme_custom_types');
 add_filter('admin_footer_text', 'left_admin_footer_text_output');
@@ -245,8 +244,6 @@ function pagination($pages = '', $range = 4) {
     }
 }
 
-
-
 // Hook for adding admin menus
 add_action('admin_menu', 'pkconfig_divisa');
 
@@ -264,8 +261,8 @@ function pkconfig_divisa_options() {
     // variables for the field and option names 
     $opt_name = 'mt_divisa';
     $divisa = 'divisa';
- 
-    
+
+
     $data_field_name = 'mt_divisa';
 
     // Read in existing option value from database
@@ -325,34 +322,20 @@ function pkconfig_divisa_options() {
 // debug($_REQUEST, false);
 }
 
-function select_divisa($d='Bs.',$dato, $t=1) {
+function select_divisa($d = 'Bs.', $dato, $t = 1) {
 //    mt_pkconfig
-    $num = (int)$dato;
+    $num = (int) $dato;
     $opt_name = 'mt_divisa';
     $opt_val = get_option($opt_name);
     $db = json_decode($opt_val);
-    
-    return $d.$db->divisa*$num*$t;
+
+    return $d . $db->divisa * $num * $t;
 //    update_option($opt_name, $config);
 }
 
+function e_add_to_cart($product) {
+    global $product;
 
-function e_add_to_cart($product){
-                                    global $product;
-
-echo apply_filters( 'woocommerce_loop_add_to_cart_link',
-	sprintf( '<a href="%s" rel="nofollow" data-product_id="%s" data-product_sku="%s" data-quantity="%s" class="button %s product_type_%s">%s</a>',
-		esc_url( $product->add_to_cart_url() ),
-		esc_attr( $product->id ),
-		esc_attr( $product->get_sku() ),
-		esc_attr( isset( $quantity ) ? $quantity : 1 ),
-		$product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
-		esc_attr( $product->product_type ),
-		esc_html( $product->add_to_cart_text() )
-	),
-$product );
-               
+    echo apply_filters('woocommerce_loop_add_to_cart_link', sprintf('<a href="%s" rel="nofollow" data-product_id="%s" data-product_sku="%s" data-quantity="%s" class="button %s product_type_%s">%s</a>', esc_url($product->add_to_cart_url()), esc_attr($product->id), esc_attr($product->get_sku()), esc_attr(isset($quantity) ? $quantity : 1 ), $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '', esc_attr($product->product_type), esc_html($product->add_to_cart_text())
+            ), $product);
 }
-
-
-

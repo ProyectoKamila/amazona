@@ -50,7 +50,6 @@
             <div class="clearfix"></div>
             <?php
             wp_reset_query();
-            $catid = get_cat_id('destacados');
             query_posts(array('post_type' => 'product', 'exclude' => 'destacados'));
             ?>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 home-producto">
@@ -61,16 +60,24 @@
                         the_post();
                         ?>
                         <li >
-                            <div class="origami-categoria">
-                                <?php the_category(get_the_ID()); ?>
-                            </div>
+
+
+
+                            <a><div class="origami-categoria">
+                                    <?php
+                                    echo $cat;
+                                    ?>
+                                </div>
+                            </a>
+
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 ">
                                 <div class="producto">
-                                    <div class="producto-imagen">
-                                        <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>" alt="<?php the_title(); ?>"/>
-                                    </div>
-                                    <p><?php the_title(); ?> - <?php echo select_divisa('Bs.', $product->get_price()); ?></p>
-                                    <div class="producto-precio"></div>
+                                    <a href="<?php the_permalink(); ?>">    <div class="producto-imagen">
+                                            <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>" alt="<?php the_title(); ?>"/>
+                                        </div>
+                                    </a>
+                                    <p><?php the_title(); ?> - <strong><?php echo select_divisa('Bs.', $product->get_price()); ?></strong></p>
+                                    <a href="<?php the_permalink(); ?>"><div class="producto-precio"></div></a>
                                     <div class="producto-wishlist"></div>
                                 </div>
                             </div>

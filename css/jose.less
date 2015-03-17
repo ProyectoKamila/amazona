@@ -1,7 +1,7 @@
 body{
     margin: 0px; 
     font-family: 'Open Sans', sans-serif !important;
-    padding-top: 150px;
+    padding-top: 130px;
     background: @lila;
 }
 header.menu{
@@ -407,11 +407,12 @@ header.menu-movil{
     }
     .origami-categoria{
         width: 80%;
-        height: 35px;
-        background: @naranja;
+        height: 40px;
+        background: url(../images/general/etiqueta.png) 5px top no-repeat;
         position: absolute;
         z-index: 5;
         top: 0;
+        background-size: cover;
     }
     .producto{
         height: 320px;
@@ -547,6 +548,102 @@ footer{
         }
     }
 }
+.content-productos{
+    #content{
+        height: 40px;
+        font-size: 16px;
+        line-height: 40px;
+        a{
+            color:@naranja;
+            text-decoration: none;
+        }
+    }
+
+}
+#categoria-productos{
+    width:100%;
+    position:relative;
+    background: white;
+    clear: both;
+    a{color: black;}
+    .cat-proudcto{
+        overflow: hidden;
+        position: relative;
+        height: 360px;
+        margin-bottom:20px;
+    }
+    .origami-categoria{
+        width: 80%;
+        height: 40px;
+        background: url(../images/general/etiqueta.png) 5px top no-repeat;
+        position: absolute;
+        z-index: 5;
+        top: 0;
+        background-size: cover;
+        overflow:hidden;
+        h1{
+            text-align:  center;
+            color: white;
+            font-size: 20px;
+            line-height: 0px;
+        }
+    }
+    .top-50{
+        top: 25%;
+    }
+    .top-20{
+        top: 10%;
+    }
+    .producto{
+        width: 100%;
+        background: @lila;
+        overflow:hidden;
+        height:360px;
+        position:relative;
+        .producto-imagen{
+            width: 86%;
+            height: 280px;
+            margin-left: 7%;
+            margin-right: 7%;
+            margin-top: 4%;
+            position:relative;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+
+        }
+        p{ 
+            text-align: center; 
+            line-height: 1.3;
+            padding:2px;
+        }
+        .producto-precio{
+            width: 35px;
+            height: 35px;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            background: url(../images/general/carrito-18.png)  center  @azul-claro no-repeat;
+            cursor: pointer;
+
+        }
+        .producto-wishlist{
+            width: 35px;
+            height: 35px;
+            position: absolute;
+            bottom: 0px;
+            left: 35px;
+
+            background: url(../images/general/corazon-18.png)  center  @azul-claro no-repeat;
+            cursor: pointer;
+        }
+        .producto-precio:hover, .producto-wishlist:hover{
+            background-color: @naranja;
+        }
+
+    }
+}
 @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { 
     .oferta-producto-description{
         display: inline-block !important;
@@ -629,4 +726,8 @@ footer{
             /*background: rgba(255,255,255,0.95);*/
         }
     }
+}
+.content-productos{
+    background: white;
+    width: 100%;
 }

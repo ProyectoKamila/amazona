@@ -129,9 +129,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 redes">
-                        <img src="<?php bloginfo('template_url'); ?>/images/general/carta.png" alt="redes"/>
-                        <img src="<?php bloginfo('template_url'); ?>/images/general/carta.png" alt="redes"/>
-                        <img src="<?php bloginfo('template_url'); ?>/images/general/carta.png" alt="redes"/>
+                        <img src="<?php bloginfo('template_url'); ?>/images/general/redes-movil_08.png" alt="redes"/>
+                        <img src="<?php bloginfo('template_url'); ?>/images/general/redes-movil_04.png" alt="redes"/>
+                        <img src="<?php bloginfo('template_url'); ?>/images/general/redes-movil_06.png" alt="redes"/>
                     </div>
                     <div class="col-sm-6 col-xs-6 logo">
                         <a href="<?php echo home_url(''); ?>">

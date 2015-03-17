@@ -1,4 +1,11 @@
-<?php get_header(); ?>
+<?php 
+$vari=select_xtras();
+$ex = json_decode($vari);
+$vari1=select_pkconfig();
+$db = json_decode($vari1);
+// debug($db);
+?>
+    <?php get_header(); ?>
 <div class="container">
     <div class="row">
         <?php get_template_part('banner'); ?>
@@ -17,7 +24,7 @@
 
                     <div class="  <?php if ($x === 1) { ?>col-lg-12 col-md-12 col-sm-12 col-xs-12<?php } else { ?>col-lg-6 col-md-6 col-sm-12 col-xs-12<?php } ?> oferta box-offer-<?php echo $x; ?>">
                         <div class="oferta-producto-imagen">
-                            <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>" alt="<?php the_title(); ?>"/>
+                            <a href="<?php the_permalink(); ?>"><img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>" alt="<?php the_title(); ?>"/></a>
                         </div>
                         <div class="oferta-producto-description">
                             <h2><?php the_title(); ?></h2>
@@ -60,13 +67,13 @@
                         the_post();
                         ?>
                         <li >
-
-
-
-                            <a><div class="origami-categoria">
-                                    <?php
-                                    echo $cat;
-                                    ?>
+                            <?php $categoria = get_the_category_wc($post->ID); ?>
+                                    <?php foreach ($categoria as $category) { ?>
+                                    <?php } ?>
+                            <a href="<?=  $category->slug;?>">
+                                <div class="origami-categoria">
+                                    
+                                    <h1><?= $category->name; ?></h1>
                                 </div>
                             </a>
 
@@ -88,7 +95,7 @@
             </div>
             <div class="clearfix"></div>
             <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 title-marca">
-                <h2>Los productos y marcas</h2>
+                <h2><?= $ex->titulo; ?></h2>
             </div>
         </div>
     </div>
@@ -97,16 +104,16 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
+                <p><?= $ex->content; ?></p>
                 <ul>
                     <li> <img src="<?php bloginfo('template_url'); ?>/images/general/ubicacion.png" alt="Ubicacion"/> 
-                        <p>galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.</p>
+                        <p><?= $db->direc; ?></p>
                     </li>
                     <li> <img src="<?php bloginfo('template_url'); ?>/images/general/carta.png" alt="Ubicacion"/> 
-                        <p>lipsum@lipsum.com</p>
+                        <p><?= $db->email; ?></p>
                     </li>
                     <li> <img src="<?php bloginfo('template_url'); ?>/images/general/telefono.png" alt="Ubicacion"/> 
-                        <p>5555-555-55-55</p>
+                        <p><?= $db->tlf; ?></p>
                     </li>
                 </ul>
             </div>

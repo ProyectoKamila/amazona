@@ -47,8 +47,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<tfoot>
 
 		<tr class="cart-subtotal">
-			<th><?php _e( 'Cart Subtotal', 'woocommerce' ); ?></th>
-			<td><?php wc_cart_totals_subtotal_html(); ?></td>
+			<th><?php // _e( 'Cart Subtotal', 'woocommerce' ); ?></th>
+			<td><?php // wc_cart_totals_subtotal_html(); ?></td>
 		</tr>
 
 		<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
